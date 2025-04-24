@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">The Guardian</string>
+    <string name="no_data">No data</string>
+    <string name="published_label">Published</string>
+    <string name="back_button_content_description">Back button</string>
+    <string name="favourite_button_content_description">Favourite button</string>
+    <string name="favourites_title">Favourites</string>
+    <string name="this_week_label">This week</string>
+    <string name="last_week_label">Last week</string>
+    <string name="week_label">Week</string>
+    <string name="fetch_articles_error">"Error fetching articles"</string>
+    <string name="fetch_article_error">"Error fetching article"</string>
+</resources>
