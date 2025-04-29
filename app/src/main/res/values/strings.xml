@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">The Guardian</string>
     <string name="no_data">No data</string>
+    <string name="refresh">Refresh</string>
     <string name="published_label">Published</string>
     <string name="back_button_content_description">Back button</string>
     <string name="favourite_button_content_description">Favourite button</string>
