@@ -1,5 +1,6 @@
 package com.gibconsulting.guardianapisample.data.remote.di
 
+import android.content.Context
 import com.gibconsulting.guardianapisample.core.BuildInfo
 import com.gibconsulting.guardianapisample.data.remote.client.GuardianClient
 import com.gibconsulting.guardianapisample.data.remote.repository.ArticlesRepositoryImpl
@@ -11,14 +12,17 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.Dispatchers
+import okhttp3.Cache
 import okhttp3.Call
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.io.File
 import java.util.Date
 import javax.inject.Qualifier
 import javax.inject.Singleton
@@ -51,8 +55,17 @@ abstract class RemoteModule {
 
         @Provides
         @Singleton
-        internal fun okHttpCallFactory(buildInfo: BuildInfo): Call.Factory {
+        internal fun okHttpCallFactory(
+            buildInfo: BuildInfo,
+            @ApplicationContext applicationContext: Context
+        ): Call.Factory {
             val builder = OkHttpClient.Builder()
+                .cache(
+                    Cache(
+                        directory = File(applicationContext.cacheDir, "http_cache"),
+                        maxSize = 50L * 1024L * 1024L
+                    )
+                )
                 .addInterceptor(getAuthInterceptor())
             if (buildInfo.isDebug) {
                 builder.addInterceptor(
