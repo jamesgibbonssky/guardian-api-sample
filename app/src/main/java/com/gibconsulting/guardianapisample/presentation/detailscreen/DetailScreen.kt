@@ -14,6 +14,7 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -34,8 +35,6 @@ import com.gibconsulting.guardianapisample.R
 import com.gibconsulting.guardianapisample.presentation.common.Udf
 import com.gibconsulting.guardianapisample.presentation.common.collectNavigationEffect
 import com.gibconsulting.guardianapisample.presentation.common.collectViewEffect
-import com.gibconsulting.guardianapisample.presentation.theme.AppBlue
-import com.gibconsulting.guardianapisample.presentation.theme.AppWhite
 import com.gibconsulting.guardianapisample.presentation.theme.GuardianApiSampleAppTheme
 import timber.log.Timber
 
@@ -131,13 +130,13 @@ private fun AppBar(
                 Icon(
                     imageVector = if (showFavoriteFilled) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
                     contentDescription = stringResource(R.string.favourite_button_content_description),
-                    tint = AppWhite
+                    tint = MaterialTheme.colorScheme.onPrimary
                 )
             }
         },
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors().copy(
-                containerColor = AppBlue,
-                scrolledContainerColor = AppBlue,
+                containerColor = MaterialTheme.colorScheme.surface,
+                scrolledContainerColor = MaterialTheme.colorScheme.surface,
             ),
         scrollBehavior = scrollBehavior
     )

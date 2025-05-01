@@ -36,9 +36,7 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.gibconsulting.guardianapisample.R
 import com.gibconsulting.guardianapisample.presentation.mainscreen.previewmocks.articleListPreviewMock
-import com.gibconsulting.guardianapisample.presentation.theme.AppBlack
 import com.gibconsulting.guardianapisample.presentation.theme.AppLightGray
-import com.gibconsulting.guardianapisample.presentation.theme.AppWhite
 import com.gibconsulting.guardianapisample.presentation.theme.GuardianApiSampleAppTheme
 import com.gibconsulting.guardianapisample.domain.usecase.GetLatestArticlesGroupedUseCase
 import com.gibconsulting.guardianapisample.domain.usecase.GetLatestArticlesGroupedUseCase.Companion.WEEK_DATE_PATTERN
@@ -70,7 +68,7 @@ fun MainScreenContent(
                 Text(
                     text = stringResource(R.string.no_data),
                     style = MaterialTheme.typography.titleMedium,
-                    color = AppBlack
+                    color = MaterialTheme.colorScheme.onBackground
                 )
                 Button(onClick = onRefresh) {
                     Text(text = stringResource(R.string.refresh))
@@ -94,7 +92,7 @@ fun MainScreenContent(
                     when (it) {
                         is ArticleUiListItem.HeaderItem -> {
                             HorizontalDivider(
-                                color = AppBlack,
+                                color = MaterialTheme.colorScheme.onBackground,
                                 thickness = 2.dp,
                                 modifier = Modifier.padding(horizontal = 12.dp)
                             )
@@ -120,7 +118,7 @@ fun MainScreenContent(
                             ArticleItem(
                                 article = it.article,
                                 modifier = Modifier
-                                    .background(AppWhite)
+                                    .background(MaterialTheme.colorScheme.background)
                                     .padding(8.dp)
                                     .fillMaxWidth(),
                                 onItemClicked = onItemClicked
